@@ -1,0 +1,46 @@
+<mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="login-form">
+            <div class="form-container">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput
+                        placeholder="Username"
+                        [(ngModel)]="username"
+                        name="username"
+                        required>
+                        <button mat-icon-button matSuffix>
+                            <mat-icon>sentiment_very_satisfied</mat-icon>
+                        </button>
+                  </mat-form-field>
+            </div>
+        
+            <div class="form-container">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput
+                        [type]="hide ? 'password' : 'text'"
+                        placeholder="Password"
+                        [(ngModel)]="password"
+                        name="password"
+                        required>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                  </mat-form-field>
+            </div>
+        
+
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    
+    <mat-card-actions>
+        <div class="form-container">
+            <button mat-raised-button (click)="login()" color="primary">Login</button>
+        </div>
+    </mat-card-actions>
+</mat-card>

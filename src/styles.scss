@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+    // 1 REM = 10px;
+    font-size: 64.25%;
+}
+
+html, body { height: 100%; }
+body { 
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
