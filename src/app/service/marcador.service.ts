@@ -10,11 +10,11 @@ export class MarcadorService {
   url: string;
 
   constructor(private http: HttpClient) {
-    this.url = "https://protected-springs-55933.herokuapp.com/api/provincias/45";
+    this.url = "https://protected-springs-55933.herokuapp.com/api/marcadores/";
   }
 
-  all() : Promise<any> {
-    return this.http.get(`${this.url}/`).toPromise();
+  all(pageIndex: number, pageSize: number) : Promise<any> {
+    return this.http.get(`${this.url}?pageIndex=${pageIndex}&pageSize=${pageSize}`).toPromise();
   }
 
 }

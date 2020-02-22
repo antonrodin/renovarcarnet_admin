@@ -1,1 +1,34 @@
-<p>manage-marcadores works!</p>
+<table mat-table [dataSource]="marcadores" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="slug">
+      <th mat-header-cell *matHeaderCellDef> Slug </th>
+      <td mat-cell *matCellDef="let element"> {{element.slug}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="pos">
+      <th mat-header-cell *matHeaderCellDef> Posicion </th>
+      <td mat-cell *matCellDef="let element"> {{element.lat}} - {{element.lng}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
