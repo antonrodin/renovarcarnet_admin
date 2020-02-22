@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from "../models/User";
+import { UserService } from "../services/user.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,23 +10,28 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username: string;
-  password: string;
+  user: User;
   hide: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private userService: UserService) {
     this.hide = true;
+    this.user = new User();
   }
 
   ngOnInit() {
   }
 
   login() : void {
-    if(this.username == 'admin' && this.password == 'admin') {
-      this.router.navigate(['user']);
-    } else {
-      alert("Invalid Credentials");
-    }
+    
+    this.userService.login(this.user).then(result => {
+      if(result['token']) {
+        localStorage.setItem('user-token', result['token']);
+        this.router.navigate(['user']);
+      } else {
+        alert("Credenciales invalidos");
+      }
+    })
+    
   }
 
 }

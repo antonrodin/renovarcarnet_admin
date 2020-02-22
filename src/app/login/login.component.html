@@ -6,11 +6,11 @@
         <form class="login-form">
             <div class="form-container">
                 <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>Username</mat-label>
+                    <mat-label>Email</mat-label>
                     <input matInput
-                        placeholder="Username"
-                        [(ngModel)]="username"
-                        name="username"
+                        placeholder="Email"
+                        [(ngModel)]="user.email"
+                        name="email"
                         required>
                         <button mat-icon-button matSuffix>
                             <mat-icon>sentiment_very_satisfied</mat-icon>
@@ -24,7 +24,7 @@
                     <input matInput
                         [type]="hide ? 'password' : 'text'"
                         placeholder="Password"
-                        [(ngModel)]="password"
+                        [(ngModel)]="user.password"
                         name="password"
                         required>
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -35,7 +35,6 @@
         
 
       </form>
-      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
     </mat-card-content>
     
     <mat-card-actions>
